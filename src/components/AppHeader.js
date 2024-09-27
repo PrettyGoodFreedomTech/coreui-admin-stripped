@@ -20,8 +20,11 @@ import {
   cilContrast,
   cilEnvelopeOpen,
   cilList,
+  cilMagnifyingGlass,
   cilMenu,
   cilMoon,
+  cilPeople,
+  cilSettings,
   cilSun,
 } from '@coreui/icons'
 
@@ -57,27 +60,39 @@ const AppHeader = () => {
               Dashboard
             </CNavLink>
           </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
-          </CNavItem>
         </CHeaderNav>
         <CHeaderNav className="ms-auto">
           <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilBell} size="lg" />
+            <CNavLink href="#/search">
+              <CIcon
+                icon={cilMagnifyingGlass}
+                size="lg"
+                onClick={() => {
+                  console.log('search')
+                }}
+              />
             </CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilList} size="lg" />
+            <CNavLink href="#/profiles">
+              <CIcon
+                icon={cilPeople}
+                size="lg"
+                onClick={() => {
+                  console.log('profiles')
+                }}
+              />
             </CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilEnvelopeOpen} size="lg" />
+            <CNavLink href="#/settings">
+              <CIcon
+                icon={cilSettings}
+                size="lg"
+                onClick={() => {
+                  console.log('settings')
+                }}
+              />
             </CNavLink>
           </CNavItem>
         </CHeaderNav>

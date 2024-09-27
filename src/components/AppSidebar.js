@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 
 import {
   CCloseButton,
@@ -13,16 +14,41 @@ import CIcon from '@coreui/icons-react'
 
 import { AppSidebarNav } from './AppSidebarNav'
 
-import { logo } from 'src/assets/brand/logo'
-import { sygnet } from 'src/assets/brand/sygnet'
-
 // sidebar nav config
-import navigation from '../_nav'
+import navigationHelloWorld from 'src/nav/_navHelloWorld'
+import navigationDashboard from 'src/nav/_navDashboard'
+import navigationHSettings from 'src/nav/_navSettings'
+import navigationApp1 from 'src/nav/_navApp1'
+import navigationApp2 from 'src/nav/_navApp2'
+import navigationApp3 from 'src/nav/_navApp3'
+
+function getNavigation(activeApp, signedIn, developmentMode) {
+  switch (activeApp) {
+    case 'dashboard':
+      return navigationDashboard
+    case 'helloWorld':
+      return navigationHelloWorld
+    case 'settings':
+      return navigationHSettings
+    case 'app1':
+      return navigationApp1
+    case 'app2':
+      return navigationApp2
+    case 'app3':
+      return navigationApp3
+    default:
+      return navigationDashboard
+  }
+}
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
+
+  const currentLocation = useLocation().pathname
+  const topLevelLocation = currentLocation.split('/')[1]
+  const navigation = getNavigation(topLevelLocation)
 
   return (
     <CSidebar
@@ -36,9 +62,12 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarHeader className="border-bottom">
-        <CSidebarBrand to="/">
-          <CIcon customClassName="sidebar-brand-full" icon={logo} height={32} />
-          <CIcon customClassName="sidebar-brand-narrow" icon={sygnet} height={32} />
+        <CSidebarBrand href="#/dashboard" to="/" style={{ textDecoration: 'none' }}>
+          <img
+            src="src/assets/brand/brainstorm010_white.svg"
+            style={{ height: '25px', marginLeft: '8px', marginRight: '10px' }}
+          />
+          brainSToRm
         </CSidebarBrand>
         <CCloseButton
           className="d-lg-none"
