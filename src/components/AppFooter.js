@@ -23,7 +23,11 @@ const AppFooter = () => {
             Pretty Good Freedom Tech
           </a>
         </span>{' '}
-        <a href="https://github.com/wds4/brainstorm" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/PrettyGoodFreedomTech"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <CIcon icon={cibGithub} size="lg" />
         </a>
       </div>
